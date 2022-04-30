@@ -35,15 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 // Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
 else {
-  $user = 'u47572';
-  $pass = '4532025';
-  $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  $user = 'u47588';
+  $pass = '9029914';
+  $db = new PDO('mysql:host=localhost;dbname=u47588', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
   $member = $_POST['login'];
   $member_pass_hash = md5($_POST['pass']);
 
   try {
-    $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
+    $stmt = $db->prepare("SELECT * FROM clients2 WHERE login = ?");
     $stmt->execute(array($member));
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
   } catch (PDOException $e) {
