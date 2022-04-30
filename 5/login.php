@@ -23,13 +23,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 ?>
 
-  <form action="" method="POST">
-    <span>Логин:</span>
-    <input name="login" />
-    <span>Пароль:</span>
-    <input name="pass" />
-    <input type="submit" value="Войти" />
-  </form>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 150px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+        <form action="" method="POST" class="login">
+            <div>
+                <span>Логин:</span>
+                <input name="login" />
+            </div>
+            <div>
+                <span>Пароль:</span>
+                <input name="pass" />
+            </div>
+            <input type="submit" value="Войти" />
+          </form>
+    </div>
+</body>
+</html>
 
 <?php
 }
