@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $errors['date'] = !empty($_COOKIE['date_error']);
     $errors['gender'] = !empty($_COOKIE['gender_error']);
     $errors['limbs'] = !empty($_COOKIE['limbs_error']);
-    $errors['superpowers'] = !empty($_COOKIE['superpowers_error']);
+    $errors['stand'] = !empty($_COOKIE['stand_error']);
     $errors['bio'] = !empty($_COOKIE['bio_error']);
     $errors['policy'] = !empty($_COOKIE['policy_error']);
 
@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('limbs_error', '', 100000);
         $messages[] = '<div class="error">Выберите количество конечностей.</div>';
     }
-    if ($errors['superpowers']) {
-        setcookie('superpowers_error', '', 100000);
+    if ($errors['stand']) {
+        setcookie('stand_error', '', 100000);
         $messages[] = '<div class="error">Выберите суперспособнос(ть/ти).</div>';
     }
     if ($errors['bio']) {
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['date'] = empty($_COOKIE['date_value']) ? '' : $_COOKIE['date_value'];
     $values['gender'] = empty($_COOKIE['gender_value']) ? '' : $_COOKIE['gender_value'];
     $values['limbs'] = empty($_COOKIE['limbs_value']) ? '' : $_COOKIE['limbs_value'];
-    $values['superpowers'] = empty($_COOKIE['superpowers_value']) ? '' : $_COOKIE['superpowers_value'];
+    $values['stand'] = empty($_COOKIE['stand_value']) ? '' : $_COOKIE['stand_value'];
     $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
     $values['policy'] = empty($_COOKIE['policy_value']) ? '' : $_COOKIE['policy_value'];
 
@@ -107,11 +107,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('limbs_value', $_POST['limbs'], time() + 12 * 30 * 24 * 60 * 60);
     }
 
-    if (empty($_POST['superpowers'])) {
-        setcookie('superpowers_error', '1', time() + 24 * 60 * 60);
+    if (empty($_POST['stand'])) {
+        setcookie('stand_error', '1', time() + 24 * 60 * 60);
         $errors = TRUE;
     } else {
-        setcookie('superpowers_value', implode(',', $_POST['superpowers']), time() + 12 * 30 * 24 * 60 * 60);
+        setcookie('stand_value', implode(',', $_POST['stand']), time() + 12 * 30 * 24 * 60 * 60);
     }
 
     if (empty($_POST['bio'])) {
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('date_error', '', 100000);
         setcookie('gender_error', '', 100000);
         setcookie('limbs_error', '', 100000);
-        setcookie('superpowers_error', '', 100000);
+        setcookie('stand_error', '', 100000);
         setcookie('bio_error', '', 100000);
         setcookie('policy_error', '', 100000);
     }
@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $limbs = $_POST['limbs'];
     $bio = $_POST['bio'];
     $policy = $_POST['policy'];
-    $powers = implode(',', $_POST['superpowers']);
+    $powers = implode(',', $_POST['stand']);
 
     $user = 'u47588';
     $pass = '9029914';
@@ -160,8 +160,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $stmt->execute(array($name, $email, $date, $gender, $limbs, $bio, $policy));
         $power_id = $db->lastInsertId();
 
-        $superpowers = $db->prepare("INSERT INTO powers SET powers = ?, user_id = ? ");
-        $superpowers->execute(array($powers, $power_id));
+        $stand = $db->prepare("INSERT INTO powers SET powers = ?, user_id = ? ");
+        $stand->execute(array($powers, $power_id));
     } catch (PDOException $e) {
         print('Error : ' . $e->getMessage());
         exit();
