@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 
     $errors = FALSE;
-    if (!preg_match('/^[a-z0-9][a-z0-9-_]+[a-z0-9]$/is', $_POST['name'])) {
+    if (!preg_match('/^[a-z]|[а-я]$/is', $_POST['name'])) {
         setcookie('name_error', '1', time() + 24 * 60 * 60);
         $errors = TRUE;
     } else {
