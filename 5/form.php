@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-    <title>Task 4 Tkachev</title>
+    <title>Task 5 Tkachev</title>
 </head>
 <body>
 <?php
@@ -19,6 +19,7 @@
         }
     ?>
     <div class="form-container">
+        <a href="login.php?logout=1" <?php (empty( $_SESSION['uid'])) ? print('style="display:none"') : print('style="display:inline-block"'); ?>>Выйти</a>
         <form method="POST" action="">
             <div class="input-group block">
                 <input type="text" class="form-control" name="name" 
