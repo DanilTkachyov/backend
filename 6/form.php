@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-    <title>Task 5 Tkachev</title>
+    <title>Task 6 Tkachev</title>
 </head>
 
 <body>
